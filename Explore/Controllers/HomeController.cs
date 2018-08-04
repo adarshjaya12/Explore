@@ -55,7 +55,8 @@ namespace Travel.Controllers
         [HttpGet]
         public ActionResult Submit(double latitude, double longitude)
         {
-            return null;
+            var result = GoogleService.GetSearchByLatLong(latitude, longitude);
+            return new JsonResult(result);
         }
         public IActionResult Index()
         {

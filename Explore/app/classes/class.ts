@@ -6,19 +6,21 @@ export interface IAutoComplete {
 }
 
 export interface PlaceObject{
-    Geomenty: any;
+    geometry: any;
     OpeningHours: any;
-    PlaceId: string;
-    Name:string;
+    place_id: string;
+    name:string;
     Vicinity:string;
-    rating:string;
+    rating: string;
+    types: Array<string>;
 }
+
 export interface TypeResultObject{
     NextPage:string;
     Result:Array<PlaceObject>;
     Status:string;
 }
 export interface INearBySearchResult{
-    Type:string;
-    TypeResult: Array<TypeResultObject>;
+    type:string;
+    searchResult: Array<PlaceObject>;
 }

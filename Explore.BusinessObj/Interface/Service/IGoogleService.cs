@@ -18,5 +18,7 @@ namespace Explore.BusinessObj.Interface.Service
 
         CityModel GetCityModel(double lat, double longi);
 
+        List<NearBySearchModel> GetSearchByLatLong(double lat, double longi);
+
     }
 }

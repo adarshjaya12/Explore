@@ -29,6 +29,8 @@ namespace Explore
             services.AddTransient<IGoogleAPI, GoogleAPI>();
             services.AddTransient<IAPIService, APIService>();
             services.AddTransient<IGoogleService, GoogleService>();
+            services.AddTransient<IMapService, MapService>();
+            services.AddTransient<INearBySearchService, NearBySearchService>();
             services.AddMvc();
         }
 

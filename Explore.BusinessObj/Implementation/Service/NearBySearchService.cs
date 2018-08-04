@@ -30,7 +30,7 @@ namespace Explore.BusinessObj.Implementation.Service
             string page_token = string.Empty;
             bool lastCheck = false;
             int incrementer = 1;
-            List<NearBySearch> searchResult = new List<NearBySearch>();
+            List<NearBySearchResult> searchResult = new List<NearBySearchResult>();
             List<NearBySearchModel> Result = new List<NearBySearchModel>();
             foreach (var type in searchTypes )
             {
@@ -43,16 +43,18 @@ namespace Explore.BusinessObj.Implementation.Service
                     if (result.status != "INVALID REQUEST") {
                         if (result.next_page_token != null)
                             page_token = result.next_page_token;
-                        searchResult.Append(result);
+                        searchResult.AddRange(result.results);
                         incrementer += 1;
                     }
                     if (lastCheck || page_token == string.Empty)
                     {
                         NearBySearchModel model = new NearBySearchModel();
+                        model.SearchResult = new List<NearBySearchResult>();
                         model.Type = type.Key;
                         model.SearchResult.AddRange(searchResult);
-                        Result.Append(model);
+                        Result.Add(model);
                         incrementer = 1;
+                        searchResult = new List<NearBySearchResult>();
                         continue;
                     }
                 }

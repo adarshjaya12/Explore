@@ -43,7 +43,7 @@ namespace Explore.BusinessObj.Implementation.Service
 
         public List<NearBySearchModel> GetSearchByLatLong(double lat, double longi)
         {
-            string latLong = lat.ToString() + longi.ToString();
+            string latLong = lat.ToString() +","+ longi.ToString();
             return NearBySearch.GetNearBySearchByTypes(latLong);
         }
 

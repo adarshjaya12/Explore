@@ -29,17 +29,15 @@ class PlaceListContainer extends React.Component<PlaceListContainerProps, PlaceL
         this.setMountData();
     }
     setMountData():void{
-        var typeStrings = this.props.nearBySearchList.map(x => x.Type);
+        var typeStrings = this.props.nearBySearchList.map(x => x.type);
         var result = new Array<PlaceObject>();
         var filteredResult: INearBySearchResult = undefined;
         if(this.state.typeSelected == 'default')
             filteredResult = this.props.nearBySearchList[0];
         else
-            filteredResult = this.props.nearBySearchList.filter(x => x.Type == this.state.typeSelected)[0];
-        filteredResult.TypeResult.forEach(element => {
-           element.Result.forEach(item =>{
-               result.push(item);
-           })
+            filteredResult = this.props.nearBySearchList.filter(x => x.type == this.state.typeSelected)[0];
+        filteredResult.searchResult.forEach(element => {
+            result.push(element);
         });
         this.setState({
             nearByTypeList: typeStrings,
@@ -70,7 +68,7 @@ class PlaceListContainer extends React.Component<PlaceListContainerProps, PlaceL
                     <ul className="auto-complete-list" >
                         {this.state.displayList.map(item =>
                             <li >
-                                <p>{item.Name}</p>
+                                <p>{item.name}</p> 
                             </li>
                         )}
                     </ul>

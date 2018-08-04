@@ -8,6 +8,6 @@ namespace Explore.BusinessObj.Implementation.Model
     public class NearBySearchModel
     {
         public string Type { get; set; }
-        public List<NearBySearch> SearchResult { get; set; }
+        public List<NearBySearchResult> SearchResult { get; set; }
     }
 }

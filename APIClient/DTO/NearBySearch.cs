@@ -8,8 +8,27 @@ namespace APIClient.DTO
     {
         public List<object> html_attributions { get; set; }
         public string next_page_token { get; set; }
-        public List<Result> results { get; set; }
+        public List<NearBySearchResult> results { get; set; }
         public string status { get; set; }
+    }
+
+    public class NearBySearchResult
+    {
+        public string icon { get; set; }
+        public string id { get; set; }
+        public string name { get; set; }
+        public OpeningHours opening_hours { get; set; }
+        public List<Photo> photos { get; set; }
+        public double rating { get; set; }
+        public string reference { get; set; }
+        public string scope { get; set; }
+        public string vicinity { get; set; }
+        public int? price_level { get; set; }
+        public List<AddressComponent> address_components { get; set; }
+        public string formatted_address { get; set; }
+        public Geometry geometry { get; set; }
+        public string place_id { get; set; }
+        public List<string> types { get; set; }
     }
 
     public class OpeningHours

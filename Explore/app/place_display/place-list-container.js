@@ -28,17 +28,15 @@ var PlaceListContainer = /** @class */ (function (_super) {
     };
     PlaceListContainer.prototype.setMountData = function () {
         var _this = this;
-        var typeStrings = this.props.nearBySearchList.map(function (x) { return x.Type; });
+        var typeStrings = this.props.nearBySearchList.map(function (x) { return x.type; });
         var result = new Array();
         var filteredResult = undefined;
         if (this.state.typeSelected == 'default')
             filteredResult = this.props.nearBySearchList[0];
         else
-            filteredResult = this.props.nearBySearchList.filter(function (x) { return x.Type == _this.state.typeSelected; })[0];
-        filteredResult.TypeResult.forEach(function (element) {
-            element.Result.forEach(function (item) {
-                result.push(item);
-            });
+            filteredResult = this.props.nearBySearchList.filter(function (x) { return x.type == _this.state.typeSelected; })[0];
+        filteredResult.searchResult.forEach(function (element) {
+            result.push(element);
         });
         this.setState({
             nearByTypeList: typeStrings,
@@ -61,7 +59,7 @@ var PlaceListContainer = /** @class */ (function (_super) {
             React.createElement("div", null,
                 React.createElement("ul", { className: "auto-complete-list" }, this.state.displayList.map(function (item) {
                     return React.createElement("li", null,
-                        React.createElement("p", null, item.Name));
+                        React.createElement("p", null, item.name));
                 })))));
     };
     return PlaceListContainer;
