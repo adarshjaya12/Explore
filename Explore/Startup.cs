@@ -2,6 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using APIClient.Implementation;
+using APIClient.Interface;
+using Explore.BusinessObj.Implementation.Service;
+using Explore.BusinessObj.Interface.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +25,10 @@ namespace Explore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+            services.AddTransient<IGoogleAPI, GoogleAPI>();
+            services.AddTransient<IAPIService, APIService>();
+            services.AddTransient<IGoogleService, GoogleService>();
             services.AddMvc();
         }
 
@@ -39,7 +47,12 @@ namespace Explore
 
             app.UseStaticFiles();
 
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
         }
     }
 }
